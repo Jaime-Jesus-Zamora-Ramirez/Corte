@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { arrayMove } from '@dnd-kit/sortable'
 import { useLocalStorage } from './hooks/useLocalStorage'
 import { openInvoice } from './lib/invoice'
 import type { Product } from './types'
@@ -37,6 +38,14 @@ export default function App() {
   const toggleCard = (id: string, card: boolean) =>
     setProducts((prev) => prev.map((p) => (p.id === id ? { ...p, card } : p)))
 
+  // Solo cambia el orden: los cálculos no dependen de la posición
+  const reorderProducts = (activeId: string, overId: string) =>
+    setProducts((prev) => {
+      const from = prev.findIndex((p) => p.id === activeId)
+      const to = prev.findIndex((p) => p.id === overId)
+      return from < 0 || to < 0 ? prev : arrayMove(prev, from, to)
+    })
+
   const removeProduct = (id: string) =>
     setProducts((prev) => prev.filter((p) => p.id !== id))
 
@@ -49,7 +58,12 @@ export default function App() {
         onDiscountChange={setDiscount}
       />
       <div className="grid grid-cols-1 gap-4 lg:grid-cols-[1fr_280px] lg:items-start">
-        <ProductList products={products} onRemove={removeProduct} onToggleCard={toggleCard} />
+        <ProductList
+          products={products}
+          onRemove={removeProduct}
+          onToggleCard={toggleCard}
+          onReorder={reorderProducts}
+        />
         <div className="lg:sticky lg:top-4">
           <CalculationsPanel
             products={products}
