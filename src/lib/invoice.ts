@@ -60,6 +60,7 @@ export function buildInvoiceHtml(products: Product[], options: CalcOptions): str
   .badge { display: inline-block; padding: 2px 10px; border-radius: 999px; font-size: 12px; font-weight: 600; }
   .badge.vendedor { background: #dbeafe; color: #1d4ed8; }
   .badge.doctor { background: #dcfce7; color: #15803d; }
+  .badge.servicios { background: #fef3c7; color: #b45309; }
   .empty { text-align: center; color: #71717a; padding: 24px; }
   button { margin-top: 24px; padding: 10px 18px; border: 0; border-radius: 8px; background: #18181b; color: #fff; font-size: 14px; cursor: pointer; }
   @media print { body { background: #fff; padding: 0; } .sheet { padding: 0; } button { display: none; } }

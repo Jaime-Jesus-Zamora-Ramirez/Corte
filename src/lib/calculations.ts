@@ -73,6 +73,7 @@ const totalAfterCard: Calculation = (products, { discount }) => ({
 export const calculations: Calculation[] = [
   totalByRole('vendedor', 'Total Vendedor'),
   totalByRole('doctor', 'Total Doctor'),
+  totalByRole('servicios', 'Total Servicios Médicos'),
   total,
   totalCard,
   totalDiscount,

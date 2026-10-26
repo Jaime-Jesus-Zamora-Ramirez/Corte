@@ -12,7 +12,7 @@ import {
   Switch,
   TextField,
 } from '@heroui/react'
-import { ROLE_LABELS, type Product, type Role } from '../types'
+import { ROLE_LABELS, isRole, type Product, type Role } from '../types'
 
 interface Props {
   onAdd: (product: Omit<Product, 'id' | 'card'>) => void
@@ -32,7 +32,7 @@ export function ProductForm({ onAdd, discount, onDiscountChange }: Props) {
     v === null ? NaN : typeof v === 'number' ? v : undefined,
   )
   const [role, setRole] = useLocalStorage<Role>('draft:role', 'vendedor', (v) =>
-    v === 'vendedor' || v === 'doctor' ? v : undefined,
+    isRole(v) ? v : undefined,
   )
 
   const [errors, setErrors] = useState<string[]>([])

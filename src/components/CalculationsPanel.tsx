@@ -17,7 +17,7 @@ export function CalculationsPanel({ products, options, onClear, onPdf }: Props) 
         <Card.Title>Cálculos</Card.Title>
       </Card.Header>
       <Card.Content>
-        <dl className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-1">
+        <dl className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-1">
           {calculations.map((calc) => {
             const r = calc(products, options)
             const highlight = r.id === 'total-final'
@@ -27,16 +27,16 @@ export function CalculationsPanel({ products, options, onClear, onPdf }: Props) 
                 key={r.id}
                 className={
                   highlight
-                    ? 'col-span-full rounded-xl bg-accent p-3 text-accent-foreground'
+                    ? 'col-span-full rounded-xl bg-accent px-3 py-2 text-accent-foreground'
                     : warning
-                      ? 'rounded-xl bg-warning p-3 text-white'
-                      : 'rounded-xl border border-divider p-3'
+                      ? 'rounded-xl bg-warning px-3 py-1.5 text-white'
+                      : 'rounded-xl border border-divider px-3 py-1.5'
                 }
               >
-                <dt className={highlight || warning ? 'text-sm opacity-90' : 'text-sm text-muted'}>
+                <dt className={highlight || warning ? 'text-xs opacity-90' : 'text-xs text-muted'}>
                   {r.label}
                 </dt>
-                <dd className={`font-semibold tabular-nums ${highlight ? 'text-2xl' : 'text-lg'}`}>
+                <dd className={`font-semibold leading-snug tabular-nums ${highlight ? 'text-xl' : 'text-base'}`}>
                   {r.value}
                 </dd>
               </div>

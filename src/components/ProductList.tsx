@@ -30,12 +30,13 @@ interface Props {
 const ROLE_BADGE: Record<Role, string> = {
   vendedor: 'bg-accent-soft text-accent-soft-foreground',
   doctor: 'bg-success-soft text-success-soft-foreground',
+  servicios: 'bg-warning-soft text-warning-soft-foreground',
 }
 
 function RoleBadge({ role }: { role: Role }) {
   return (
     <span
-      className={`inline-block rounded-full px-2.5 py-0.5 text-xs font-medium ${ROLE_BADGE[role]}`}
+      className={`inline-block whitespace-nowrap rounded-full px-2.5 py-0.5 text-xs font-medium ${ROLE_BADGE[role]}`}
     >
       {ROLE_LABELS[role]}
     </span>

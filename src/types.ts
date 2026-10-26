@@ -1,9 +1,13 @@
-export type Role = 'vendedor' | 'doctor'
+export type Role = 'vendedor' | 'doctor' | 'servicios'
 
 export const ROLE_LABELS: Record<Role, string> = {
   vendedor: 'Vendedor',
   doctor: 'Doctor',
+  servicios: 'Servicios Médicos',
 }
+
+export const isRole = (v: unknown): v is Role =>
+  typeof v === 'string' && v in ROLE_LABELS
 
 export interface Product {
   id: string
